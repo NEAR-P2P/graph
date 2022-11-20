@@ -1,0 +1,179 @@
+type _Schema_
+  @fulltext(
+    name: "UsersSearch"
+    language: en
+    algorithm: rank
+    include: [{ entity: "Datauser", fields: [{ name: "user_id" }] }]
+  )
+
+type Datauser @entity {
+  id: ID!
+  user_id: String!
+  name: String!
+  last_name: String!
+  phone: String!
+  email: String!
+  country: String!
+  mediator: Boolean!
+  is_active: Boolean!
+  badge: String!
+  is_merchant: Boolean!
+  campo1: String!
+  campo2: String!
+  campo3: String!
+  total_orders: Int!
+  orders_completed: Int!
+  percentaje_completion: String!
+}
+
+type Paymentmethod @entity(immutable: true) {
+  id: ID!
+  paymentmethoduser: [Paymentmethoduser!]! @derivedFrom(field: "payment_method")
+  payment_method: String!
+  input1: String!
+  input2: String!
+  input3: String!
+  input4: String!
+  input5: String!
+}
+
+type Fiatmethod @entity {
+  id: ID!
+  fiat_method: String!
+  flagcdn: String!
+}
+
+type Paymentmethoduser @entity {
+  id: ID!
+  user_id: String!
+  payment_method: Paymentmethod!
+  input1: String!
+  input2: String!
+  input3: String!
+  input4: String!
+  input5: String!
+}
+
+type Offersbuy @entity {
+  id: ID!
+  offer_id: BigInt!
+  owner_id: String!
+  asset: String!
+  exchange_rate: String!
+  amount: BigInt!
+  remaining_amount: BigInt!
+  min_limit: BigInt!
+  max_limit: BigInt!
+  payment_method: String!
+  fiat_method: BigInt!
+  is_merchant: Boolean!
+  time: BigInt!
+  terms_conditions: String!
+  status: Int!
+}
+
+type Offerssell @entity {
+  id: ID!
+  offer_id: BigInt!
+  owner_id: String!
+  asset: String!
+  exchange_rate: String!
+  amount: BigInt!
+  remaining_amount: BigInt!
+  min_limit: BigInt!
+  max_limit: BigInt!
+  payment_method: String!
+  fiat_method: BigInt!
+  is_merchant: Boolean!
+  time: BigInt!
+  terms_conditions: String!
+  status: Int!
+}
+
+type Orderbuy @entity {
+  id: ID!
+  offer_id: BigInt!
+  order_id: BigInt!
+  owner_id: String!
+  asset: String!
+  signer_id: String!
+  exchange_rate: String!
+  operation_amount: BigInt!
+  amount_delivered: BigInt!
+  fee_deducted: BigInt!
+  payment_method: BigInt!
+  fiat_method: BigInt!
+  confirmation_owner_id: Int!
+  confirmation_signer_id: Int!
+  confirmation_current: Int!
+  time: BigInt!
+  datetime: String!
+  terms_conditions: String!
+  status: Int!
+}
+
+type Ordersell @entity {
+  id: ID!
+  offer_id: BigInt!
+  order_id: BigInt!
+  owner_id: String!
+  asset: String!
+  signer_id: String!
+  exchange_rate: String!
+  operation_amount: BigInt!
+  amount_delivered: BigInt!
+  fee_deducted: BigInt!
+  payment_method: BigInt!
+  fiat_method: BigInt!
+  confirmation_owner_id: Int!
+  confirmation_signer_id: Int!
+  confirmation_current: Int!
+  time: BigInt!
+  datetime: String!
+  terms_conditions: String!
+  status: Int!
+}
+
+type Orderhistorybuy @entity {
+  id: ID!
+  offer_id: BigInt!
+  order_id: BigInt!
+  owner_id: String!
+  asset: String!
+  signer_id: String!
+  exchange_rate: String!
+  operation_amount: BigInt!
+  amount_delivered: BigInt!
+  fee_deducted: BigInt!
+  payment_method: BigInt!
+  fiat_method: BigInt!
+  confirmation_owner_id: Int!
+  confirmation_signer_id: Int!
+  confirmation_current: Int!
+  time: BigInt!
+  datetime: String!
+  terms_conditions: String!
+  status: Int!
+}
+
+type Orderhistorysell @entity {
+  id: ID!
+  offer_id: BigInt!
+  order_id: BigInt!
+  owner_id: String!
+  asset: String!
+  signer_id: String!
+  exchange_rate: String!
+  operation_amount: BigInt!
+  amount_delivered: BigInt!
+  fee_deducted: BigInt!
+  payment_method: BigInt!
+  fiat_method: BigInt!
+  confirmation_owner_id: Int!
+  confirmation_signer_id: Int!
+  confirmation_current: Int!
+  time: BigInt!
+  datetime: String!
+  terms_conditions: String!
+  status: Int!
+}
